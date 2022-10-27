@@ -1,10 +1,4 @@
 export default function Education(props) {
-  //   {
-  //     onDataUpdate -> function
-  //     propertyOne -> "Hello"
-  //     propertyTwo -> "World"
-  //   }
-
   function handleSubmit(event) {
     // Do things for this form
     const form = event.target;

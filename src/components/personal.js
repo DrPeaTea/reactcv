@@ -1,10 +1,4 @@
 export default function personal(props) {
-  //   {
-  //     onDataUpdate -> function
-  //     propertyOne -> "Hello"
-  //     propertyTwo -> "World"
-  //   }
-
   function handleSubmit(event) {
     // Do things for this form
     const form = event.target;
@@ -22,7 +16,7 @@ export default function personal(props) {
     <form className="personal" onSubmit={handleSubmit}>
       <input type="text" id="name" placeholder="Name"></input>
       <input type="text" id="email" placeholder="Email"></input>
-      <input type="text" placeholder="Phone number" id="phoneNumber"></input>
+      <input type="text" placeholder="Phone Number" id="phoneNumber"></input>
       <button type="submit">submit</button>
     </form>
   );

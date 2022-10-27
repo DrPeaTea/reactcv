@@ -23,38 +23,6 @@ function App() {
   const [task, setTask] = useState();
   const [workDate, setWorkDate] = useState();
 
-  // function handleFormSubmit(event) {
-  //   console.log("First form submitted");
-
-  //   // event.target = form
-  //   // form.name
-  //   setName(event.target.name.value);
-  //   setEmail(event.target.email.value);
-  //   setPhoneNumber(event.target.phoneNumber.value);
-  //   setFormState("submitted");
-  //   event.target.reset();
-  //   event.preventDefault();
-  // }
-
-  // function handleFormSubmit1(event) {
-  //   setSchool(event.target.school.value);
-  //   setTitle(event.target.title.value);
-  //   setDate(event.target.date.value);
-  //   setFormState("submitted1");
-  //   event.target.reset();
-  //   event.preventDefault();
-  // }
-
-  // function handleFormSubmit2(event) {
-  //   setCompany(event.target.company.value);
-  //   setPosition(event.target.position.value);
-  //   setTask(event.target.task.value);
-  //   setWorkDate(event.target.workDate.value);
-  //   setFormState("finished");
-  //   event.target.reset();
-  //   event.preventDefault();
-  // }
-
   // App
   // -> Education
   function updatePersonalData(data) {
@@ -73,6 +41,7 @@ function App() {
 
     setFormState("work-experience");
   }
+
   function updateWorkData(data) {
     // Put data into my state (App)
     setCompany(data.company);
