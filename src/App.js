@@ -1,5 +1,7 @@
 import { useState } from "react";
-
+import Personal from "./components/personal";
+import Education from "./components/education";
+import Work from "./components/work";
 // data -> [ Component ] -> html to render
 // props ->
 // state ->
@@ -21,33 +23,66 @@ function App() {
   const [task, setTask] = useState();
   const [workDate, setWorkDate] = useState();
 
-  function handleFormSubmit(event) {
-    // event.target = form
-    // form.name
-    setName(event.target.name.value);
-    setEmail(event.target.email.value);
-    setPhoneNumber(event.target.phoneNumber.value);
-    setFormState("submitted");
-    event.target.reset();
-    event.preventDefault();
+  // function handleFormSubmit(event) {
+  //   console.log("First form submitted");
+
+  //   // event.target = form
+  //   // form.name
+  //   setName(event.target.name.value);
+  //   setEmail(event.target.email.value);
+  //   setPhoneNumber(event.target.phoneNumber.value);
+  //   setFormState("submitted");
+  //   event.target.reset();
+  //   event.preventDefault();
+  // }
+
+  // function handleFormSubmit1(event) {
+  //   setSchool(event.target.school.value);
+  //   setTitle(event.target.title.value);
+  //   setDate(event.target.date.value);
+  //   setFormState("submitted1");
+  //   event.target.reset();
+  //   event.preventDefault();
+  // }
+
+  // function handleFormSubmit2(event) {
+  //   setCompany(event.target.company.value);
+  //   setPosition(event.target.position.value);
+  //   setTask(event.target.task.value);
+  //   setWorkDate(event.target.workDate.value);
+  //   setFormState("finished");
+  //   event.target.reset();
+  //   event.preventDefault();
+  // }
+
+  // App
+  // -> Education
+  function updatePersonalData(data) {
+    // Put data into my state (App)
+    setName(data.name);
+    setEmail(data.email);
+    setPhoneNumber(data.phoneNumber);
+    setFormState("education");
   }
-  function handleFormSubmit1(event) {
-    setSchool(event.target.school.value);
-    setTitle(event.target.title.value);
-    setDate(event.target.date.value);
-    setFormState("submitted1");
-    event.target.reset();
-    event.preventDefault();
+
+  function updateEducationData(data) {
+    // Put data into my state (App)
+    setSchool(data.school);
+    setTitle(data.title);
+    setDate(data.date);
+
+    setFormState("work-experience");
   }
-  function handleFormSubmit2(event) {
-    setCompany(event.target.company.value);
-    setPosition(event.target.position.value);
-    setTask(event.target.task.value);
-    setWorkDate(event.target.workDate.value);
+  function updateWorkData(data) {
+    // Put data into my state (App)
+    setCompany(data.company);
+    setPosition(data.position);
+    setTask(data.task);
+    setWorkDate(data.workDate);
+
     setFormState("finished");
-    event.target.reset();
-    event.preventDefault();
   }
+
   if (formState === "finished") {
     return (
       <div>
@@ -66,47 +101,12 @@ function App() {
         <button onClick={handleResetForm}>reset</button>
       </div>
     );
-  } else if (formState === "submitted1") {
-    return (
-      <div>
-        <form className="work-history" onSubmit={handleFormSubmit2}>
-          <input type="text" id="company" placeholder="Company Name"></input>
-          <input type="text" id="position" placeholder="Job Position"></input>
-          <input type="text" id="task" placeholder="Main Tasks"></input>
-          <input
-            type="text"
-            id="workDate"
-            placeholder="period of employment"
-          ></input>
-          <button type="submit">submit</button>
-        </form>
-        <button onClick={handleResetForm}>reset</button>
-      </div>
-    );
-  } else if (formState === "submitted") {
-    return (
-      <div>
-        <form className="education" onSubmit={handleFormSubmit1}>
-          <input type="text" id="school" placeholder="School Name"></input>
-          <input type="text" id="title" placeholder="education title"></input>
-          <input type="text" id="date" placeholder="date of study"></input>
-          <button type="submit">submit</button>
-        </form>
-        <button onClick={handleResetForm}>reset</button>
-      </div>
-    );
+  } else if (formState === "work-experience") {
+    return <Work onDataUpdate={updateWorkData} />;
+  } else if (formState === "education") {
+    return <Education onDataUpdate={updateEducationData} />;
   }
-
-  return (
-    <div>
-      <form className="personal" onSubmit={handleFormSubmit}>
-        <input type="text" id="name" placeholder="Name"></input>
-        <input type="text" id="email" placeholder="Email"></input>
-        <input type="text" placeholder="Phone number" id="phoneNumber"></input>
-        <button type="submit">submit</button>
-      </form>
-    </div>
-  );
+  return <Personal onDataUpdate={updatePersonalData} />;
 }
 
 export default App;
